@@ -1,23 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:learningapp/routers/router.dart';
+import 'package:learningapp/bloc/themeCubit.dart';
 
 void main() {
-  runApp(const ProviderScope( child:MyApp()));
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      title: 'Crescent learning app',
-      routerConfig: router,
-    theme: ThemeData(
-        useMaterial3: true,
-        colorSchemeSeed: Colors.blueGrey,
+    return MultiBlocProvider(
+      providers: [BlocProvider<Themecubit>(create: (_) => Themecubit())],
+      child: BlocBuilder<Themecubit, ThemeData>(
+        builder: (context, theme) {
+          return MaterialApp.router(
+            debugShowCheckedModeBanner: false,
+            title: 'Crescent learning app',
+            theme: theme,
+            routerConfig: router,
+          );
+        },
       ),
     );
   }
