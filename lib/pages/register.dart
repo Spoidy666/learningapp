@@ -28,7 +28,7 @@ class Register extends StatelessWidget {
             SizedBox(height: 30),
             Customtextbox(
               hinttext: 'User name',
-              textController: _emailcontroller,
+              textController: _namecontroller,
               textFieldIcon: Icons.person,
             ),
             SizedBox(height: 15),
@@ -40,7 +40,7 @@ class Register extends StatelessWidget {
             SizedBox(height: 15),
             Customtextbox(
               hinttext: 'Password',
-              textController: _emailcontroller,
+              textController: _passwordcontroller,
               textFieldIcon: Icons.password_rounded,
             ),
             SizedBox(height: 15),

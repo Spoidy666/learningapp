@@ -1,30 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:learningapp/bloc/themeCubit.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:learningapp/state/themeState.dart';
 
-class SettingsPage extends StatelessWidget {
+class SettingsPage extends ConsumerWidget {
   const SettingsPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final theme = ref.watch(themeProvider);
+    final isDarkMode = theme.brightness == Brightness.dark;
+
     return Scaffold(
       appBar: AppBar(title: const Text('Settings')),
-      body: BlocBuilder<Themecubit, ThemeData>(
-        builder: (context, theme) {
-          final isDarkMode = theme.brightness == Brightness.dark;
-
-          return ListView(
-            children: [
-              SwitchListTile(
-                title: const Text('Dark Mode'),
-                value: isDarkMode,
-                onChanged: (value) {
-                  context.read<Themecubit>().toggleTheme();
-                },
-              ),
-            ],
-          );
-        },
+      body: ListView(
+        children: [
+          SwitchListTile(
+            title: const Text('Dark Mode'),
+            value: isDarkMode,
+            onChanged: (_) {
+              ref.read(themeProvider.notifier).toggleTheme();
+            },
+          ),
+        ],
       ),
     );
   }

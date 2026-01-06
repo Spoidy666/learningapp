@@ -1,30 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:learningapp/routers/router.dart';
-import 'package:learningapp/bloc/themeCubit.dart';
+import 'package:learningapp/state/themeState.dart';
+
 
 void main() {
-  runApp(const ProviderScope(child: MyApp()));
+  runApp(
+    const ProviderScope(
+      child: MyApp(),
+    ),
+  );
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends ConsumerWidget {
   const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [BlocProvider<Themecubit>(create: (_) => Themecubit())],
-      child: BlocBuilder<Themecubit, ThemeData>(
-        builder: (context, theme) {
-          return MaterialApp.router(
-            debugShowCheckedModeBanner: false,
-            title: 'Crescent learning app',
-            theme: theme,
-            routerConfig: router,
-          );
-        },
-      ),
+  Widget build(BuildContext context, WidgetRef ref) {
+    final theme = ref.watch(themeProvider);
+
+    return MaterialApp.router(
+      title: 'Crescent learning app',
+      routerConfig: router,
+      theme: theme,
     );
   }
 }
