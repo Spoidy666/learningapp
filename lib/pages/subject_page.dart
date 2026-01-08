@@ -4,6 +4,7 @@ import 'package:learningapp/pages/home_page.dart';
 import 'package:learningapp/pages/register.dart';
 import 'package:learningapp/pages/settingsPage.dart';
 import 'package:learningapp/providers/subject_provider.dart';
+import 'package:learningapp/widgets/mainPage.dart';
 import 'package:learningapp/widgets/subject_tittle.dart';
 
 class SubjectPage extends ConsumerWidget {
@@ -65,7 +66,7 @@ class SubjectPage extends ConsumerWidget {
               Navigator.of(context).push(
                 MaterialPageRoute(
                   builder: (ctx) {
-                    return HomePage();
+                    return Mainpage();
                   },
                 ),
               );
