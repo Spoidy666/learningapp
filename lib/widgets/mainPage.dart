@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:learningapp/models/unit_model.dart';
 import 'package:learningapp/pages/home_page.dart';
 import 'package:learningapp/pages/profilePage.dart';
 import 'package:learningapp/pages/register.dart';
-import 'package:learningapp/pages/settingsPage.dart';
+import 'package:learningapp/pages/new_content_upload_page.dart'; // Add this import
 
 class Mainpage extends StatefulWidget {
   const Mainpage({super.key});
@@ -15,7 +14,13 @@ class Mainpage extends StatefulWidget {
 class _MainpageState extends State<Mainpage> {
   int _currentIndex = 0;
 
-  final _pages = [HomePage(), Profilepage(), Register()];
+  // Added NewContentUploadPage to the pages list
+  final _pages = [
+    HomePage(),
+    Profilepage(),
+    const NewContentUploadPage(), // Your upload page
+    Register(),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -35,19 +40,24 @@ class _MainpageState extends State<Mainpage> {
         },
         items: const [
           BottomNavigationBarItem(
-            activeIcon: Icon(Icons.home_filled),
+            activeIcon: Icon(Icons.home),
             icon: Icon(Icons.home_outlined, size: 24),
             label: "Home",
           ),
           BottomNavigationBarItem(
-            activeIcon: Icon(Icons.book_online),
-            icon: Icon(Icons.book, size: 24),
+            activeIcon: Icon(Icons.person),
+            icon: Icon(Icons.person_outline, size: 24),
+            label: "Profile",
+          ),
+          BottomNavigationBarItem(
+            activeIcon: Icon(Icons.cloud_upload),
+            icon: Icon(Icons.cloud_upload_outlined, size: 24),
+            label: "Upload",
+          ),
+          BottomNavigationBarItem(
+            activeIcon: Icon(Icons.book),
+            icon: Icon(Icons.book_outlined, size: 24),
             label: "Courses",
-          ),
-          BottomNavigationBarItem(
-            activeIcon: Icon(Icons.home_filled),
-            icon: Icon(Icons.home_outlined, size: 24),
-            label: "Home",
           ),
         ],
       ),

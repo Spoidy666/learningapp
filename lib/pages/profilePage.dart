@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:learningapp/widgets/customPrimaryText.dart';
-import 'package:learningapp/widgets/previousLearned.dart';
 
 class Profilepage extends StatelessWidget {
   const Profilepage({super.key});
