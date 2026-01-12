@@ -13,7 +13,7 @@ class PracticeTile2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 230,
+      height: 210,
       child: Container(
         margin: const EdgeInsets.all(16),
         decoration: BoxDecoration(borderRadius: BorderRadius.circular(16)),

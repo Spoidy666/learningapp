@@ -36,6 +36,8 @@ dependencies:
   riverpod_annotation: ^3.0.3
   video_player: ^2.8.2
   chewie: ^1.7.5
+  streakify: ^0.0.2
+  fl_chart: ^1.1.1
 
 
 dev_dependencies:
